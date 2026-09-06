@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-denrawit-yellow: #D9A016; /* deeper golden yellow */
+  --color-denrawit-green: #1C4226; /* deeper forest green */
+  --color-denrawit-red: #A32824; /* deeper earthy red */
+  --color-denrawit-beige: #EDE8D7; /* deeper warm beige */
+  --font-sans: "Nunito", sans-serif;
+  --font-serif: "Lora", serif;
+}
+
+@layer base {
+    /* Custom base styles to reinforce the vintage/authentic feel */
+    body {
+        @apply antialiased text-gray-900 bg-denrawit-beige;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif font-medium;
+    }
+    
+    p {
+        @apply font-sans leading-relaxed;
+    }
+    
+    /* Make shapes and ornaments softer (not sharp) */
+    img, video, article, .border, .bg-white, .bg-gray-100, .bg-gray-900, a.block {
+        @apply rounded-2xl;
+    }
+    
+    /* Revert rounding for specific full-width structural sections to prevent layout breaking */
+    header, section, footer, main, .rounded-full {
+        @apply rounded-none;
+    }
+    
+    .rounded-full {
+        @apply rounded-full;
+    }
+}
+
+@layer utilities {
+    /* Add subtle noise texture for the vintage feel without using heavy gradients */
+    .bg-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+}
